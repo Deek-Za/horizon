@@ -476,7 +476,13 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		AI.current = src
 	SetLightsAndPower()
 	update_holoray(user, get_turf(loc))
+	RegisterSignal(user, COMSIG_MOB_EMOTE, .proc/handle_hologram_emote)
 	return TRUE
+
+/obj/machinery/holopad/proc/handle_hologram_emote(atom/movable/source, datum/emote/emote, action, type_override, message, intentional)
+	SIGNAL_HANDLER
+	for(var/mob/mob_viewer in viewers(world.view, src))
+		to_chat(mob_viewer, "<span class='emote'><b>[source]</b> [message]</span>")
 
 /obj/machinery/holopad/proc/clear_holo(mob/living/user)
 	qdel(masters[user]) // Get rid of user's hologram
@@ -491,6 +497,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	qdel(holorays[user])
 	LAZYREMOVE(holorays, user)
 	SetLightsAndPower()
+	UnregisterSignal(user, COMSIG_MOB_EMOTE)
 	return TRUE
 
 //Try to transfer hologram to another pad that can project on T
