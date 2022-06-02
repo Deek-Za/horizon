@@ -1,6 +1,6 @@
-#define LOG_BURN_TIMER 4500
+#define LOG_BURN_TIMER 1.5 MINUTES
 #define PAPER_BURN_TIMER 150
-#define MAXIMUM_BURN_TIMER 90000
+#define MAXIMUM_BURN_TIMER 30 MINUTES
 
 /obj/structure/fireplace
 	name = "fireplace"
@@ -92,15 +92,15 @@
 		return
 
 	switch(burn_time_remaining())
-		if(0 to 500)
+		if(0 to 3 MINUTES)
 			. += "fireplace_fire0"
-		if(500 to 1000)
+		if(3 MINUTES to 8 MINUTES)
 			. += "fireplace_fire1"
-		if(1000 to 1500)
+		if(8 MINUTES to 14 MINUTES)
 			. += "fireplace_fire2"
-		if(1500 to 2000)
+		if(14 MINUTES to 20 MINUTES)
 			. += "fireplace_fire3"
-		if(2000 to MAXIMUM_BURN_TIMER)
+		if(20 MINUTES to MAXIMUM_BURN_TIMER)
 			. += "fireplace_fire4"
 	. += "fireplace_glow"
 
@@ -110,15 +110,15 @@
 		return
 
 	switch(burn_time_remaining())
-		if(0 to 500)
+		if(0 to 3 MINUTES)
 			set_light(1)
-		if(500 to 1000)
+		if(3 MINUTES to 8 MINUTES)
 			set_light(2)
-		if(1000 to 1500)
+		if(8 MINUTES to 14 MINUTES)
 			set_light(3)
-		if(1500 to 2000)
+		if(14 MINUTES to 20 MINUTES)
 			set_light(4)
-		if(2000 to MAXIMUM_BURN_TIMER)
+		if(20 MINUTES to MAXIMUM_BURN_TIMER)
 			set_light(6)
 
 /obj/structure/fireplace/process(delta_time)
