@@ -581,7 +581,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	else
 		ray.transform = turn(M.Scale(1,sqrt(distx*distx+disty*disty)),newangle)
 
-// RECORDED MESSAGES%
+// RECORDED MESSAGES
 
 /obj/machinery/holopad/proc/setup_replay_holo(datum/holorecord/record)
 	var/obj/effect/overlay/holo_pad_hologram/Hologram = new(loc)//Spawn a blank effect at the location.
