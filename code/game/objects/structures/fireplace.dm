@@ -1,6 +1,6 @@
 #define LOG_BURN_TIMER 1.5 MINUTES
 #define PAPER_BURN_TIMER 150
-#define MAXIMUM_BURN_TIMER 30 MINUTES
+#define MAXIMUM_BURN_TIMER 2.5 HOURS
 
 /obj/structure/fireplace
 	name = "fireplace"
