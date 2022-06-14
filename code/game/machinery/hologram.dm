@@ -484,7 +484,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 /obj/machinery/holopad/proc/handle_hologram_emote(atom/movable/source, datum/emote/emote, action, type_override, message, intentional)
 	SIGNAL_HANDLER
 	for(var/mob/mob_viewer in viewers(world.view, src))
-		to_chat(mob_viewer, "<span class='emote'><b>[source]</b> [message]</span>")
+		to_chat(mob_viewer, SPAN_EMOTE("<b>[source]</b> [message]"))
 
 /obj/machinery/holopad/proc/clear_holo(mob/living/user)
 	qdel(masters[user]) // Get rid of user's hologram
