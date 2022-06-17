@@ -307,8 +307,11 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		to_chat(user, SPAN_DANGER("You can't put [target] into [src]. They might wake up soon. Try again in [remaining_minutes] minutes."))
 		return
 
-	if(target == user && LAZYLEN(target.buckled_mobs) > 0)
-		to_chat(user, SPAN_DANGER("You can't fit into the cryopod while someone is buckled to you."))
+	if(LAZYLEN(target.buckled_mobs) > 0)
+		if(target == user)
+			to_chat(user, SPAN_DANGER("You can't fit into the cryopod while someone is buckled to you."))
+		else
+			to_chat(user, SPAN_DANGER("You can't fit [target] into the cryopod while someone is buckled to them."))
 		return
 
 	if(target == user)
